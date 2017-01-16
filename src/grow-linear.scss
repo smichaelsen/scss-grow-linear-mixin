@@ -1,0 +1,25 @@
+@mixin grow-linear($property, $sizeValues) {
+    @each $sizeValue in $sizeValues {
+        $i: index($sizeValues, $sizeValue);
+        @if $i == 1 {
+            $value: nth($sizeValue, 2);
+            #{$property}: #{$value}px;
+        } @else {
+            $previousSizeValue: nth($sizeValues, $i - 1);
+            $vMin: map-get($sizes, nth($previousSizeValue, 1));
+            $vMax: map-get($sizes, nth($sizeValue, 1));
+            $valMin: nth($previousSizeValue, 2);
+            $valMax: nth($sizeValue, 2);
+            @media (min-width: #{$vMin}px) and (max-width: #{$vMax}px) {
+                #{$property}: linear($vMin, $vMax, $valMin, $valMax);
+            }
+            @if $i == length($sizeValues) {
+                $size: nth($sizeValue, 1);
+                $value: nth($sizeValue, 2);
+                @media (min-width: #{map_get($sizes, $size)}px) {
+                    #{$property}: #{$value}px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "grow-linear",
+  "authors": [
+    "Sebastian Michaelsen <sebastian@michaelsen.io>"
+  ],
+  "description": "",
+  "main": "src/grow-linear.scss",
+  "keywords": [
+    "scss",
+    "rwd"
+  ],
+  "license": "MIT",
+  "homepage": ""
+}
