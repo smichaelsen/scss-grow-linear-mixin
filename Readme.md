@@ -33,6 +33,7 @@ When you have layout files for certain screen sizes that you need to implement i
         $font-sizes: (
             phone 20,
             portrait 30,
+            desktop 35,
         );
         @include grow-linear(font-size, $font-sizes);
     }
