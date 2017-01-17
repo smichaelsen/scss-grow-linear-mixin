@@ -14,7 +14,7 @@ to grow linearly in between.
     }
     
 This will make your `<h1>` font-size 20px at a viewport width of 320px (and below) and 30px at 640px viewport width (and
-above). Between those viewport widths the font-size grows linearly - so it will be 25px at 800px viewport widths.
+above). Between those viewport widths the font-size grows linearly - so it will be 25px at 480 viewport widths.
 
 ## Named sizes
 
@@ -24,7 +24,7 @@ When you have layout files for certain screen sizes that you need to implement i
         phone: 320,
         portrait: 768,
         landscape: 1024,
-        desktop: 1440
+        desktop: 1440,
     )
     
     h1 {
