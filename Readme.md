@@ -34,3 +34,9 @@ When you have layout files for certain screen sizes that you need to implement i
         );
         @include grow-linear(font-size, $font-sizes);
     }
+
+## Credits
+
+The logic of growing values linearly with the screen size is inspired by this video by Daniel Diekmeier
+
+[![CSS: Interpolation, lineare Gleichungen und calc](https://img.youtube.com/vi/NeQrOPRqtr4/0.jpg)](https://www.youtube.com/watch?v=NeQrOPRqtr4)
