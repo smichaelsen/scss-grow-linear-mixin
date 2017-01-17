@@ -1,10 +1,24 @@
 @mixin grow-linear($property, $sizeValues) {
 
+    /**
+     * Returns the calc() expression to grow the value linearly between two screen widths
+     */
     @function linear($vMin, $vMax, $valMin, $valMax) {
         $m: ($valMax - $valMin) / ($vMax - $vMin);
         $c: $valMin - ($vMin * $m);
         $m2: $m * 100;
         @return calc(#{$m2}vw + 1 * #{$c}px);
+    }
+
+    /**
+     * Returns $default if the $key does not exist
+     */
+    @function map-get-default($map, $key, $default) {
+        @if map-has-key($map, $key) {
+            @return map-get($map, $key);
+        } @else {
+            @return $default;
+        }
     }
 
     @each $sizeValue in $sizeValues {
@@ -14,8 +28,8 @@
             #{$property}: #{$value}px;
         } @else {
             $previousSizeValue: nth($sizeValues, $i - 1);
-            $vMin: map-get($sizes, nth($previousSizeValue, 1));
-            $vMax: map-get($sizes, nth($sizeValue, 1));
+            $vMin: map-get-default($sizes, nth($previousSizeValue, 1), nth($previousSizeValue, 1));
+            $vMax: map-get-default($sizes, nth($sizeValue, 1), nth($sizeValue, 1));
             $valMin: nth($previousSizeValue, 2);
             $valMax: nth($sizeValue, 2);
             @media (min-width: #{$vMin}px) and (max-width: #{$vMax}px) {
@@ -24,7 +38,7 @@
             @if $i == length($sizeValues) {
                 $size: nth($sizeValue, 1);
                 $value: nth($sizeValue, 2);
-                @media (min-width: #{map_get($sizes, $size)}px) {
+                @media (min-width: #{map-get-default($sizes, $size, $size)}px) {
                     #{$property}: #{$value}px;
                 }
             }
