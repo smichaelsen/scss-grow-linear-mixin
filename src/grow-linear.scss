@@ -1,4 +1,12 @@
 @mixin grow-linear($property, $sizeValues) {
+
+    @function linear($vMin, $vMax, $valMin, $valMax) {
+        $m: ($valMax - $valMin) / ($vMax - $vMin);
+        $c: $valMin - ($vMin * $m);
+        $m2: $m * 100;
+        @return calc(#{$m2}vw + 1 * #{$c}px);
+    }
+
     @each $sizeValue in $sizeValues {
         $i: index($sizeValues, $sizeValue);
         @if $i == 1 {
