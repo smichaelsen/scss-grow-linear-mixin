@@ -16,6 +16,8 @@ to grow linearly in between.
 This will make your `<h1>` font-size 20px at a viewport width of 320px (and below) and 30px at 640px viewport width (and
 above). Between those viewport widths the font-size grows linearly - so it will be 25px at 480px viewport width.
 
+Be aware of the order of your screen size definitions. You may define as many as you like but they MUST be ascending.
+
 ## Named sizes
 
 When you have layout files for certain screen sizes that you need to implement it can be useful to use *named sizes*.
