@@ -29,7 +29,7 @@
             $valMin: nth($previousSizeValue, 2);
             $valMax: nth($sizeValue, 2);
             @media (min-width: #{$vMin}px) and (max-width: #{$vMax - 1}px) {
-                /* #{$valMin}px - #{$valMax}px */
+                /* from #{$valMin}px to #{$valMax}px */
                 #{$property}: linear($vMin, $vMax, $valMin, $valMax);
             }
             @if $i == length($sizeValues) {
